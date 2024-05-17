@@ -1,0 +1,14 @@
+<template>
+    <lightning-combobox
+        name="accounts"
+        label=Accounts
+        placeholder="Select Account"
+        value={value}
+        onchange={handleChange}
+        options={accounts}
+    >
+    </lightning-combobox>
+    <lightning-button label="Create Related Contact" title="Non-primary action" onclick={createContact} class="slds-m-left_x-small"></lightning-button>
+    <lightning-button label="Display Accounts And Related Contacts" title="Non-primary action" onclick={displayAccountList} class="slds-m-left_x-small"></lightning-button>
+
+</template>
