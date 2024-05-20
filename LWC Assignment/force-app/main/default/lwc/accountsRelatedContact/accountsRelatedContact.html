@@ -1,14 +1,36 @@
 <template>
-    <lightning-combobox
-        name="accounts"
-        label=Accounts
-        placeholder="Select Account"
-        value={value}
-        onchange={handleChange}
-        options={accounts}
-    >
-    </lightning-combobox>
-    <lightning-button label="Create Related Contact" title="Non-primary action" onclick={createContact} class="slds-m-left_x-small"></lightning-button>
-    <lightning-button label="Display Accounts And Related Contacts" title="Non-primary action" onclick={displayAccountList} class="slds-m-left_x-small"></lightning-button>
+    <lightning-card title="Accounts Record">
+        <lightning-combobox
+            name="accounts"
+            label="Accounts"
+            placeholder="Select Account"
+            onchange={handleChange}
+            options={accounts}
+            value={value}>
+        </lightning-combobox>
+        <template if:true ={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+        
 
+        <br>
+        <lightning-button label="Create Related Contact" title="Non-primary action" onclick={createContact} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button label="Display Accounts And Related Contacts" title="Non-primary action" onclick={displayAccountList} class="slds-m-left_x-small"></lightning-button>
+    </lightning-card>
+
+    <!-- Modal for Contact Creation-->
+    <c-create-contact-modal
+        account-id={id}
+        is-open={showModal}
+        onclose={closeModal}>
+    </c-create-contact-modal>
+
+    <!-- Modal for Related Records Display-->
+
+    <c-related-account-and-contact-list
+        is-open={isOpen}
+        onclose={closeModal}
+        records={records}>
+    </c-related-account-and-contact-list>
+        
 </template>
